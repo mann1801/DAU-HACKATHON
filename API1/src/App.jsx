@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import WaterLevelChart from './components/WaterLevelChart';
-import StationSelector from './components/StationSelector';
-import DataSummary from './components/DataSummary';
-import LocationButton from './components/LocationButton';
+import Navbar from './components/Navbar';
+import Home from './components/pages/Home';
+import Pollution from './components/pages/Pollution';
+import SeaLevel from './components/pages/SeaLevel';
+import Cyclone from './components/pages/Cyclone';
+import Contact from './components/pages/Contact';
 import './App.css';
+import './components/pages/Pollution.css';
+import './components/pages/Contact.css';
+import './components/pages/Cyclone.css';
 
 const App = () => {
   const [waterLevelData, setWaterLevelData] = useState([]);
   const [selectedStation, setSelectedStation] = useState('8518750'); // Default to The Battery, NY
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [activeSection, setActiveSection] = useState('home');
 
   const fetchWaterLevelData = async (stationId) => {
     setLoading(true);
@@ -59,38 +65,59 @@ const App = () => {
     setSelectedStation(stationId);
   };
 
+  const handleSectionChange = (section) => {
+    setActiveSection(section);
+  };
+
+  const renderActiveSection = () => {
+    switch (activeSection) {
+      case 'home':
+        return (
+          <Home
+            waterLevelData={waterLevelData}
+            selectedStation={selectedStation}
+            onStationChange={handleStationChange}
+            loading={loading}
+            error={error}
+          />
+        );
+      case 'pollution':
+        return <Pollution />;
+      case 'sea_level':
+        return (
+          <SeaLevel
+            waterLevelData={waterLevelData}
+            selectedStation={selectedStation}
+            onStationChange={handleStationChange}
+            loading={loading}
+            error={error}
+          />
+        );
+      case 'cyclone':
+        return <Cyclone />;
+      case 'contact':
+        return <Contact />;
+      default:
+        return (
+          <Home
+            waterLevelData={waterLevelData}
+            selectedStation={selectedStation}
+            onStationChange={handleStationChange}
+            loading={loading}
+            error={error}
+          />
+        );
+    }
+  };
+
   return (
     <div className="app">
+      <Navbar 
+        activeSection={activeSection}
+        onSectionChange={handleSectionChange}
+      />
       <div className="container">
-        <header className="header">
-          <h1>🌊 NOAA Water Level Dashboard</h1>
-          <p>Real-time water level monitoring and predictions</p>
-        </header>
-
-        <LocationButton 
-          onLocationFound={handleStationChange}
-          selectedStation={selectedStation}
-        />
-
-        <StationSelector 
-          selectedStation={selectedStation}
-          onStationChange={handleStationChange}
-        />
-
-        {error && (
-          <div className="error">
-            <strong>Note:</strong> Using mock data for demonstration. {error}
-          </div>
-        )}
-
-        {loading ? (
-          <div className="loading">Loading water level data...</div>
-        ) : (
-          <>
-            <DataSummary data={waterLevelData} />
-            <WaterLevelChart data={waterLevelData} />
-          </>
-        )}
+        {renderActiveSection()}
       </div>
     </div>
   );

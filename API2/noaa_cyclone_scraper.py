@@ -16,19 +16,8 @@ import json
 from typing import Dict, List, Optional, Tuple
 from geopy.distance import geodesic
 
-# Sample station data - in a real application, this would come from a database or API
-STATIONS = {
-    'MIA': {'name': 'Miami', 'lat': 25.7617, 'lon': -80.1918},
-    'TPA': {'name': 'Tampa', 'lat': 27.9506, 'lon': -82.4572},
-    'JAX': {'name': 'Jacksonville', 'lat': 30.3322, 'lon': -81.6557},
-    'MSY': {'name': 'New Orleans', 'lat': 29.9511, 'lon': -90.0715},
-    'HOU': {'name': 'Houston', 'lat': 29.7604, 'lon': -95.3698},
-    'CHS': {'name': 'Charleston', 'lat': 32.7765, 'lon': -79.9311},
-    'ORF': {'name': 'Norfolk', 'lat': 36.8508, 'lon': -76.2859},
-    'NYC': {'name': 'New York', 'lat': 40.7128, 'lon': -74.0060},
-    'BOS': {'name': 'Boston', 'lat': 42.3601, 'lon': -71.0589},
-    'SJU': {'name': 'San Juan', 'lat': 18.4655, 'lon': -66.1057},
-}
+# Global monitoring stations - imported from fetch_live_data
+from fetch_live_data import STATIONS
 
 class NOAACycloneScraper:
     """Scraper for NOAA's National Hurricane Center website."""

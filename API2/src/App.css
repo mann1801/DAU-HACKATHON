@@ -1,0 +1,335 @@
+/* Additional App-specific styles */
+.App {
+  text-align: left;
+}
+
+.last-update {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-top: 10px;
+}
+
+.refresh-section {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.refresh-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.refresh-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.refresh-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.refresh-button:active {
+  transform: translateY(0);
+}
+
+/* Station Filter Styles */
+.station-filter {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.filter-controls {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.search-group {
+  flex: 1;
+  min-width: 200px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.country-group {
+  min-width: 180px;
+}
+
+.country-select {
+  width: 100%;
+  padding: 10px 15px;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  font-size: 14px;
+  background: white;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.country-select:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.clear-filters-btn {
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.clear-filters-btn:hover {
+  background: #ff5252;
+}
+
+.filter-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.station-count {
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+}
+
+.show-more-btn, .show-less-btn {
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.show-more-btn:hover, .show-less-btn:hover {
+  background: #5a6fd8;
+}
+
+.no-results {
+  text-align: center;
+  padding: 40px 20px;
+  color: #666;
+}
+
+.no-results-icon {
+  font-size: 48px;
+  margin-bottom: 15px;
+}
+
+.no-results-message {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.no-results-submessage {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* Station Monitor Updates */
+.station-monitor {
+  width: 100%;
+}
+
+.station-country {
+  font-size: 12px;
+  color: #666;
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+.stations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Location Button Styles */
+.location-section {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.location-button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.location-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.location-button:hover:not(:disabled) {
+  border-color: #667eea;
+  background: #f8f9ff;
+}
+
+.location-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.location-button.success {
+  border-color: #4caf50;
+  background: #f1f8e9;
+}
+
+.location-button.error {
+  border-color: #f44336;
+  background: #ffebee;
+}
+
+.location-button.loading {
+  border-color: #ff9800;
+  background: #fff3e0;
+}
+
+.location-icon {
+  font-size: 16px;
+}
+
+.location-info {
+  background: #f8f9ff;
+  border: 1px solid #e3f2fd;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 12px;
+}
+
+.location-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.location-city {
+  font-weight: 600;
+  color: #333;
+}
+
+.location-coords {
+  color: #666;
+  font-family: monospace;
+}
+
+.location-accuracy {
+  margin-top: 5px;
+  color: #888;
+  font-size: 11px;
+}
+
+.location-error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffebee;
+  border: 1px solid #ffcdd2;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 12px;
+  color: #d32f2f;
+}
+
+.distance-sort-btn {
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.distance-sort-btn:hover {
+  background: #5a6fd8;
+}
+
+.distance-sort-btn.active {
+  background: #4caf50;
+}
+
+.station-distance {
+  font-size: 12px;
+  color: #2196f3;
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .location-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .filter-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .search-group, .country-group {
+    min-width: auto;
+  }
+  
+  .filter-info {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  
+  .stations-grid {
+    grid-template-columns: 1fr;
+  }
+}

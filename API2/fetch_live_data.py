@@ -7,18 +7,81 @@ It fetches real-time cyclone data from NOAA's National Hurricane Center
 and processes it for use in the cyclone alert system.
 """
 
-# Monitoring stations with their coordinates
+# Monitoring stations with their coordinates - Global Network (50+ stations)
 STATIONS = {
-    'MIA': {'name': 'Miami', 'lat': 25.7617, 'lon': -80.1918},
-    'TPA': {'name': 'Tampa', 'lat': 27.9506, 'lon': -82.4572},
-    'JAX': {'name': 'Jacksonville', 'lat': 30.3322, 'lon': -81.6557},
-    'MSY': {'name': 'New Orleans', 'lat': 29.9511, 'lon': -90.0715},
-    'HOU': {'name': 'Houston', 'lat': 29.7604, 'lon': -95.3698},
-    'CHS': {'name': 'Charleston', 'lat': 32.7765, 'lon': -79.9311},
-    'ORF': {'name': 'Norfolk', 'lat': 36.8508, 'lon': -76.2859},
-    'NYC': {'name': 'New York', 'lat': 40.7128, 'lon': -74.0060},
-    'BOS': {'name': 'Boston', 'lat': 42.3601, 'lon': -71.0589},
-    'SJU': {'name': 'San Juan', 'lat': 18.4655, 'lon': -66.1057},
+    # United States (10 stations)
+    'MIA': {'name': 'Miami', 'lat': 25.7617, 'lon': -80.1918, 'country': 'USA'},
+    'TPA': {'name': 'Tampa', 'lat': 27.9506, 'lon': -82.4572, 'country': 'USA'},
+    'JAX': {'name': 'Jacksonville', 'lat': 30.3322, 'lon': -81.6557, 'country': 'USA'},
+    'MSY': {'name': 'New Orleans', 'lat': 29.9511, 'lon': -90.0715, 'country': 'USA'},
+    'HOU': {'name': 'Houston', 'lat': 29.7604, 'lon': -95.3698, 'country': 'USA'},
+    'CHS': {'name': 'Charleston', 'lat': 32.7765, 'lon': -79.9311, 'country': 'USA'},
+    'ORF': {'name': 'Norfolk', 'lat': 36.8508, 'lon': -76.2859, 'country': 'USA'},
+    'NYC': {'name': 'New York', 'lat': 40.7128, 'lon': -74.0060, 'country': 'USA'},
+    'BOS': {'name': 'Boston', 'lat': 42.3601, 'lon': -71.0589, 'country': 'USA'},
+    'SJU': {'name': 'San Juan', 'lat': 18.4655, 'lon': -66.1057, 'country': 'USA'},
+    
+    # India (12 stations)
+    'MUM': {'name': 'Mumbai', 'lat': 19.0760, 'lon': 72.8777, 'country': 'India'},
+    'CHE': {'name': 'Chennai', 'lat': 13.0827, 'lon': 80.2707, 'country': 'India'},
+    'KOL': {'name': 'Kolkata', 'lat': 22.5726, 'lon': 88.3639, 'country': 'India'},
+    'COK': {'name': 'Kochi', 'lat': 9.9312, 'lon': 76.2673, 'country': 'India'},
+    'VIS': {'name': 'Visakhapatnam', 'lat': 17.6868, 'lon': 83.2185, 'country': 'India'},
+    'GOA': {'name': 'Goa', 'lat': 15.2993, 'lon': 74.1240, 'country': 'India'},
+    'PBL': {'name': 'Port Blair', 'lat': 11.6234, 'lon': 92.7265, 'country': 'India'},
+    'KAN': {'name': 'Kandla', 'lat': 23.0333, 'lon': 70.2167, 'country': 'India'},
+    'TUT': {'name': 'Tuticorin', 'lat': 8.8047, 'lon': 78.1348, 'country': 'India'},
+    'PAR': {'name': 'Paradip', 'lat': 20.2648, 'lon': 86.6109, 'country': 'India'},
+    'MAN': {'name': 'Mangalore', 'lat': 12.9141, 'lon': 74.8560, 'country': 'India'},
+    'KAK': {'name': 'Kakinada', 'lat': 16.9891, 'lon': 82.2475, 'country': 'India'},
+    
+    # China (8 stations)
+    'SHA': {'name': 'Shanghai', 'lat': 31.2304, 'lon': 121.4737, 'country': 'China'},
+    'HKG': {'name': 'Hong Kong', 'lat': 22.3193, 'lon': 114.1694, 'country': 'China'},
+    'GUA': {'name': 'Guangzhou', 'lat': 23.1291, 'lon': 113.2644, 'country': 'China'},
+    'SHE': {'name': 'Shenzhen', 'lat': 22.5431, 'lon': 114.0579, 'country': 'China'},
+    'TIA': {'name': 'Tianjin', 'lat': 39.3434, 'lon': 117.3616, 'country': 'China'},
+    'DAL': {'name': 'Dalian', 'lat': 38.9140, 'lon': 121.6147, 'country': 'China'},
+    'QIN': {'name': 'Qingdao', 'lat': 36.0986, 'lon': 120.3719, 'country': 'China'},
+    'XIA': {'name': 'Xiamen', 'lat': 24.4798, 'lon': 118.0819, 'country': 'China'},
+    
+    # Japan (6 stations)
+    'TOK': {'name': 'Tokyo', 'lat': 35.6762, 'lon': 139.6503, 'country': 'Japan'},
+    'OSA': {'name': 'Osaka', 'lat': 34.6937, 'lon': 135.5023, 'country': 'Japan'},
+    'YOK': {'name': 'Yokohama', 'lat': 35.4437, 'lon': 139.6380, 'country': 'Japan'},
+    'KOB': {'name': 'Kobe', 'lat': 34.6901, 'lon': 135.1956, 'country': 'Japan'},
+    'NAG': {'name': 'Nagoya', 'lat': 35.1815, 'lon': 136.9066, 'country': 'Japan'},
+    'FUK': {'name': 'Fukuoka', 'lat': 33.5904, 'lon': 130.4017, 'country': 'Japan'},
+    
+    # Southeast Asia (8 stations)
+    'SIN': {'name': 'Singapore', 'lat': 1.3521, 'lon': 103.8198, 'country': 'Singapore'},
+    'BAN': {'name': 'Bangkok', 'lat': 13.7563, 'lon': 100.5018, 'country': 'Thailand'},
+    'MNL': {'name': 'Manila', 'lat': 14.5995, 'lon': 120.9842, 'country': 'Philippines'},
+    'JAK': {'name': 'Jakarta', 'lat': -6.2088, 'lon': 106.8456, 'country': 'Indonesia'},
+    'KUL': {'name': 'Kuala Lumpur', 'lat': 3.1390, 'lon': 101.6869, 'country': 'Malaysia'},
+    'HAN': {'name': 'Hanoi', 'lat': 21.0285, 'lon': 105.8542, 'country': 'Vietnam'},
+    'HCM': {'name': 'Ho Chi Minh City', 'lat': 10.8231, 'lon': 106.6297, 'country': 'Vietnam'},
+    'CEB': {'name': 'Cebu', 'lat': 10.3157, 'lon': 123.8854, 'country': 'Philippines'},
+    
+    # Europe (10 stations)
+    'LON': {'name': 'London', 'lat': 51.5074, 'lon': -0.1278, 'country': 'UK'},
+    'AMS': {'name': 'Amsterdam', 'lat': 52.3676, 'lon': 4.9041, 'country': 'Netherlands'},
+    'HAM': {'name': 'Hamburg', 'lat': 53.5511, 'lon': 9.9937, 'country': 'Germany'},
+    'MAR': {'name': 'Marseille', 'lat': 43.2965, 'lon': 5.3698, 'country': 'France'},
+    'BAR': {'name': 'Barcelona', 'lat': 41.3851, 'lon': 2.1734, 'country': 'Spain'},
+    'ROM': {'name': 'Rome', 'lat': 41.9028, 'lon': 12.4964, 'country': 'Italy'},
+    'ATH': {'name': 'Athens', 'lat': 37.9838, 'lon': 23.7275, 'country': 'Greece'},
+    'IST': {'name': 'Istanbul', 'lat': 41.0082, 'lon': 28.9784, 'country': 'Turkey'},
+    'LIS': {'name': 'Lisbon', 'lat': 38.7223, 'lon': -9.1393, 'country': 'Portugal'},
+    'STO': {'name': 'Stockholm', 'lat': 59.3293, 'lon': 18.0686, 'country': 'Sweden'},
+    
+    # Middle East & Others (6 stations)
+    'DUB': {'name': 'Dubai', 'lat': 25.2048, 'lon': 55.2708, 'country': 'UAE'},
+    'DOH': {'name': 'Doha', 'lat': 25.2854, 'lon': 51.5310, 'country': 'Qatar'},
+    'KUW': {'name': 'Kuwait City', 'lat': 29.3759, 'lon': 47.9774, 'country': 'Kuwait'},
+    'MUS': {'name': 'Muscat', 'lat': 23.5859, 'lon': 58.4059, 'country': 'Oman'},
+    'JED': {'name': 'Jeddah', 'lat': 21.4858, 'lon': 39.1925, 'country': 'Saudi Arabia'},
+    'DAM': {'name': 'Dammam', 'lat': 26.4207, 'lon': 50.0888, 'country': 'Saudi Arabia'},
 }
 
 import requests
