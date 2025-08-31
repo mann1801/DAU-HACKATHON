@@ -22,7 +22,7 @@ const Navbar = ({ activeSection, onSectionChange }) => {
       <div className="navbar-container">
         <div className="navbar-brand">
           <span className="brand-icon">🌊</span>
-          <span className="brand-text">Ocean Monitor</span>
+          <span className="brand-text">Alert Monitor</span>
         </div>
 
         {/* Mobile menu button */}

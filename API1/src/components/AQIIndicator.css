@@ -1,0 +1,169 @@
+.aqi-indicator {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.aqi-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.aqi-header h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: white;
+}
+
+.location-name {
+  margin: 0;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+}
+
+.aqi-display {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.aqi-circle {
+  flex-shrink: 0;
+}
+
+.aqi-progress {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.aqi-inner {
+  width: 90px;
+  height: 90px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+}
+
+.aqi-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.aqi-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: white;
+  line-height: 1;
+}
+
+.aqi-label {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.aqi-info {
+  flex: 1;
+}
+
+.aqi-level {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.aqi-message {
+  margin: 0;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.5;
+}
+
+.aqi-scale {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.5rem;
+}
+
+.scale-item {
+  padding: 0.5rem;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.scale-item.good {
+  background: #00e400;
+}
+
+.scale-item.moderate {
+  background: #ffff00;
+  color: #333;
+  text-shadow: none;
+}
+
+.scale-item.unhealthy-sensitive {
+  background: #ff7e00;
+}
+
+.scale-item.unhealthy {
+  background: #ff0000;
+}
+
+.scale-item.very-unhealthy {
+  background: #8f3f97;
+}
+
+.scale-item.hazardous {
+  background: #7e0023;
+}
+
+.scale-range {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.scale-label {
+  display: block;
+  font-size: 0.7rem;
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .aqi-display {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .aqi-scale {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .aqi-indicator {
+    padding: 1.5rem;
+  }
+}

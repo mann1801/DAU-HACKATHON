@@ -9,6 +9,10 @@ import './App.css';
 import './components/pages/Pollution.css';
 import './components/pages/Contact.css';
 import './components/pages/Cyclone.css';
+import './components/PollutionCard.css';
+import './components/AQIIndicator.css';
+import './components/PollutionChart.css';
+import './components/PollutionStationSelector.css';
 
 const App = () => {
   const [waterLevelData, setWaterLevelData] = useState([]);

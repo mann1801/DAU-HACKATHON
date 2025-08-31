@@ -1,0 +1,107 @@
+.pollution-map {
+  width: 100%;
+}
+
+.pollution-map h3 {
+  margin: 0 0 1rem 0;
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.map-container {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  margin-bottom: 1rem;
+}
+
+.leaflet-container {
+  height: 400px !important;
+  width: 100% !important;
+}
+
+.popup-content {
+  text-align: center;
+  min-width: 200px;
+}
+
+.popup-content h4 {
+  margin: 0 0 0.5rem 0;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.popup-content p {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.select-station-btn {
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: #4444ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.select-station-btn:hover {
+  background: #3333dd;
+}
+
+.map-legend {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: white;
+  font-weight: 500;
+}
+
+.legend-marker {
+  font-size: 1.2rem;
+}
+
+.legend-marker.user {
+  color: #00ff00;
+}
+
+.legend-marker.station {
+  color: #4444ff;
+}
+
+.legend-marker.selected {
+  color: #ff4444;
+}
+
+.custom-marker, .user-marker {
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .map-legend {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  
+  .leaflet-container {
+    height: 300px !important;
+  }
+}

@@ -1,0 +1,121 @@
+.pollution-card {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.pollution-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.card-icon {
+  font-size: 1.5rem;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.value-display {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+}
+
+.unit {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+}
+
+.status-indicator {
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  text-transform: capitalize;
+}
+
+.description {
+  margin: 0;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.4;
+}
+
+.threshold-info {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.threshold-label {
+  font-weight: 500;
+}
+
+/* Status-based card styling */
+.pollution-card.good {
+  border-left: 4px solid #00e400;
+}
+
+.pollution-card.moderate {
+  border-left: 4px solid #ffff00;
+}
+
+.pollution-card.unhealthy-sensitive {
+  border-left: 4px solid #ff7e00;
+}
+
+.pollution-card.unhealthy {
+  border-left: 4px solid #ff0000;
+}
+
+.pollution-card.hazardous {
+  border-left: 4px solid #7e0023;
+}
+
+@media (max-width: 768px) {
+  .pollution-card {
+    padding: 1rem;
+  }
+  
+  .value {
+    font-size: 1.5rem;
+  }
+  
+  .card-title {
+    font-size: 1.1rem;
+  }
+}
