@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AlertCard from '../AlertCard';
 import StormMap from '../StormMap';
+import StormIntensityChart from '../StormIntensityChart';
 import StationMonitor from '../StationMonitor';
 import NotificationSystem from '../NotificationSystem';
 import { dataService } from '../../services/api';
@@ -201,6 +202,22 @@ const Cyclone = () => {
                 <div className="map-container">
                   <StormMap storms={storms} stations={stations} />
                 </div>
+                
+                {/* Storm Intensity Charts */}
+                {storms.length > 0 && (
+                  <div className="intensity-charts-container">
+                    <h3 className="chart-section-title">
+                      📈 Storm Intensity Analysis
+                    </h3>
+                    <div className="charts-grid">
+                      {storms.map((storm) => (
+                        <div key={storm.storm_id} className="chart-item">
+                          <StormIntensityChart storm={storm} />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </section>
 
               {/* Station Monitoring */}
@@ -258,62 +275,11 @@ const Cyclone = () => {
           </div>
         </div>
 
-        <div className="cyclone-map">
-          <h3>🗺️ Storm Tracking Map</h3>
-          <div className="map-placeholder">
-            <p>Interactive storm tracking map will be displayed here</p>
-            <p>Showing storm paths, intensity, and projected trajectories</p>
-          </div>
-        </div>
+        
 
-        <div className="cyclone-alerts">
-          <h3>⚠️ Weather Alerts</h3>
-          <div className="alert-list">
-            <div className="alert-item danger">
-              <span className="alert-time">30 minutes ago</span>
-              <span className="alert-message">Hurricane Warning issued for Eastern Seaboard</span>
-            </div>
-            <div className="alert-item warning">
-              <span className="alert-time">2 hours ago</span>
-              <span className="alert-message">Tropical Storm Watch for Gulf Coast region</span>
-            </div>
-            <div className="alert-item info">
-              <span className="alert-time">4 hours ago</span>
-              <span className="alert-message">Storm surge advisory lifted for Florida Keys</span>
-            </div>
-          </div>
-        </div>
+        
 
-        <div className="forecast-section">
-          <h3>📅 5-Day Forecast</h3>
-          <div className="forecast-grid">
-            <div className="forecast-day">
-              <h4>Today</h4>
-              <div className="weather-icon">⛈️</div>
-              <p>Severe storms</p>
-            </div>
-            <div className="forecast-day">
-              <h4>Tomorrow</h4>
-              <div className="weather-icon">🌧️</div>
-              <p>Heavy rain</p>
-            </div>
-            <div className="forecast-day">
-              <h4>Day 3</h4>
-              <div className="weather-icon">⛅</div>
-              <p>Partly cloudy</p>
-            </div>
-            <div className="forecast-day">
-              <h4>Day 4</h4>
-              <div className="weather-icon">☀️</div>
-              <p>Sunny</p>
-            </div>
-            <div className="forecast-day">
-              <h4>Day 5</h4>
-              <div className="weather-icon">🌤️</div>
-              <p>Mostly sunny</p>
-            </div>
-          </div>
-        </div>
+        
       </div>
     </div>
   );

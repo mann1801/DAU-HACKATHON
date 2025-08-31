@@ -109,6 +109,10 @@ const StormMap = ({ storms, stations }) => {
   };
 
   const bounds = calculateBounds();
+  
+  // Default center and zoom
+  const center = [30, -75]; // Atlantic Ocean
+  const zoom = 4;
 
   useEffect(() => {
     // Fit map to bounds when data changes
@@ -119,10 +123,10 @@ const StormMap = ({ storms, stations }) => {
 
   return (
     <MapContainer
-      ref={mapRef}
-      bounds={bounds}
-      style={{ height: '100%', width: '100%' }}
-      scrollWheelZoom={true}
+      center={center}
+      zoom={zoom}
+      style={{ height: '100%', width: '100%', minHeight: '400px' }}
+      className="storm-map"
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
